@@ -1,0 +1,114 @@
+﻿<Window x:Class="SideAssistant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SideAssistant"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="SideAssistant" Height="900" Width="350">
+
+    <DockPanel>
+
+        <materialDesign:Card Padding="10" Height="890" Background="#80ffffff" Margin="5">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <Button DockPanel.Dock="Right" Background="Transparent" x:Name="CloseButton" Click="CloseButton_Click">
+                        <Button.Content>
+                            <materialDesign:PackIcon Kind="Close" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                    <Button DockPanel.Dock="Right" Background="Transparent" x:Name="MiniWindowButton" Click="MiniWindowButton_Click">
+                        <Button.Content>
+                            <materialDesign:PackIcon Kind="ArrowBottomLeft" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                    <Button DockPanel.Dock="Right" Background="Transparent" x:Name="SettingsWindowButton" Click="SettingsWindowButton_Click">
+                        <Button.Content>
+                            <materialDesign:PackIcon Kind="SettingsApplications" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                    <TextBlock DockPanel.Dock="Right"></TextBlock>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <materialDesign:Card Padding="10" Background="WhiteSmoke" DockPanel.Dock="Top" Margin="5">
+                        <StackPanel>
+                            <TextBlock x:Name="ClockTextBlock" FontSize="30" Text="20:54"/>
+                            <TextBlock x:Name="DateTextBlock" FontSize="25" Text="2019/09/28"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                    <materialDesign:Card  DockPanel.Dock="Top"  Background="WhiteSmoke" Padding="10" Margin="5">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <materialDesign:PackIcon Kind="Battery50" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="20" Text="電池残量"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <materialDesign:PackIcon x:Name="BatteryIcon" Width="50" Height="50" Kind="Battery100" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="BatteryLevelTextBlock" Padding="5" FontSize="20" Text="100%" DockPanel.Dock="Top"></TextBlock>
+                                <TextBlock x:Name="BatteryLifeTextBlock" Padding="5" FontSize="15" Text="100%" DockPanel.Dock="Bottom"></TextBlock>
+                            </DockPanel>
+                        </DockPanel>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card  DockPanel.Dock="Top"  Background="WhiteSmoke" Padding="10" Margin="5">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <materialDesign:PackIcon Kind="Rss" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <Button x:Name="RSSLoadButton" DockPanel.Dock="Right" Background="Transparent" Click="RSSLoadButton_Click">
+                                    <Button.Content>
+                                        <materialDesign:PackIcon Kind="Reload" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="20" Text="RSS" DockPanel.Dock="Top"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <ListView Height="100" x:Name="RSSListView">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock x:Name="ListViewTextBlock" MouseDown="ListViewTextBlock_MouseDown" TextWrapping="Wrap" Text="{Binding title}" Tag="{Binding url}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </DockPanel>
+                        </DockPanel>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card  DockPanel.Dock="Top"  Background="WhiteSmoke" Padding="10" Margin="5">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <materialDesign:PackIcon Kind="Memory" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="20" Text="CPU使用率"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <TextBlock FontSize="20" Text="使用率" x:Name="CPUUseTextBlock"></TextBlock>
+                            </DockPanel>
+                        </DockPanel>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card  DockPanel.Dock="Top"  Background="WhiteSmoke" Padding="10" Margin="5">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <materialDesign:PackIcon Kind="Chip" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock FontSize="20" Text="メモリ使用量"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <TextBlock FontSize="20" Text="使用率" x:Name="RAMUseTextBlock"></TextBlock>
+                            </DockPanel>
+                        </DockPanel>
+                    </materialDesign:Card>
+
+
+                </DockPanel>
+            </DockPanel>
+        </materialDesign:Card>
+
+    </DockPanel>
+
+
+</Window>
